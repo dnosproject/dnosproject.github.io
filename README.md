@@ -23,3 +23,8 @@
 ## How to cite our work?
 
 If you have a plan to use our work for your research, please cite our related work: [Bibtex](https://dl.acm.org/citation.cfm?id=3233546)
+
+
+## Copyright Notice
+
+This software may not be sold or published in printed form without written permission from the copyright holders.
