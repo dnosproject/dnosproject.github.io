@@ -10,7 +10,7 @@
 
 ## Related Projects
 
-[Umbrella Project]: (https://github.com/umbrella-project/umbrella)
+![Umbrella Project](https://github.com/umbrella-project/umbrella)
 
 
 
