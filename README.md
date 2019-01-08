@@ -1,10 +1,7 @@
-# Disaggregated Network Operating System Project (DNOS)
+# Introduction 
 
 
-## Introduction 
-
-
-## DNOS Architecutre 
+# DNOS Architecutre 
 
 ![DNOS Architecture](dnos_architecture.png)
 
