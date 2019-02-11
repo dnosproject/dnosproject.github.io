@@ -191,7 +191,6 @@ exclude:
   - README-*.md
   - README.md
   - gulpfile.js
-  - jekyll-text-theme.gemspec
   - package-lock.json
   - package.json
   - /node_modules
