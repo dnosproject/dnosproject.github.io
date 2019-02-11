@@ -182,7 +182,8 @@ markdown    : kramdown
 highlighter : rouge
 permalink   : date
 
-exclude: 
+exclude:
+    CHANGELOG.md 
 
 defaults:
   - scope:
