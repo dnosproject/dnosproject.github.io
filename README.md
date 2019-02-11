@@ -1,40 +1,30 @@
-# Jekyll Doc Theme
+# Introduction 
 
-Go to [the website](https://aksakalli.github.io/jekyll-doc-theme/) for detailed information and demo.
 
-## Running locally
+# An Overview of DNOS Architecutre 
 
-You need Ruby and gem before starting, then:
+![DNOS Architecture](dnos_architecture.png)
 
-```bash
-# install bundler
-gem install bundler
+![External Event Processing Using GRPC and Flow Rule Installation Sequence Diagram](dnos_grpc_protocol.png)
 
-# clone the project
-git clone https://github.com/aksakalli/jekyll-doc-theme.git
-cd jekyll-doc-theme
 
-# run jekyll with dependencies
-bundle exec jekyll serve
-```
+## Related Projects
 
-## Docker
+![Umbrella Project](https://github.com/umbrella-project/umbrella)
 
-Alternatively, you can deploy it using the multi-stage [Dockerfile](Dockerfile)
-that serves files from Nginx for better performance in production.
 
-Build the image for your site's `JEKYLL_BASEURL`:
 
-```
-docker build --build-arg JEKYLL_BASEURL="/" -t jekyll-doc-theme .
-```
 
-and serve it:
 
-```
-docker run -p 8080:80 jekyll-doc-theme
-```
+## Publications
 
-## License
+1. Douglas Comer, Rajas H. Karandikar, and Adib Rastegarnia. 2018. Umbrella: a unified software defined development framework. In Proceedings of the 2018 Symposium on Architectures for Networking and Communications Systems (ANCS '18). ACM, New York, NY, USA, 148-150. DOI: https://doi.org/10.1145/3230718.3233546 
 
-Released under [the MIT license](LICENSE).
+## How to cite our work?
+
+If you have a plan to use our work for your research, please cite our related work: [Bibtex](https://dl.acm.org/citation.cfm?id=3233546)
+
+
+## Copyright Notice
+
+This software may not be sold or published in printed form without written permission from the copyright holders.
