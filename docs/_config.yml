@@ -20,9 +20,9 @@ text_skin: default # "default" (default), "dark", "forest", "ocean", "chocolate"
 highlight_theme: default # "default" (default), "tomorrow", "tomorrow-night", "tomorrow-night-eighties", "tomorrow-night-blue", "tomorrow-night-bright"
 url     : https://tianqi.name
 baseurl : /jekyll-TeXt-theme
-title   : TeXt Theme
+title   : DNOS
 description: >
-  A super customizable Jekyll theme for personal site, team site, blog, project, documentation, etc.
+  A Disaggregated Network Operating System
 
 
 ## => Language and Timezone
