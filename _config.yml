@@ -182,20 +182,7 @@ markdown    : kramdown
 highlighter : rouge
 permalink   : date
 
-exclude:
-  - CHANGELOG.md
-  - HOW_TO_RELEASE.md
-  - Gemfile
-  - Gemfile.lock
-  - LICENSE
-  - README-*.md
-  - README.md
-  - gulpfile.js
-  - package-lock.json
-  - package.json
-  - /node_modules
-  - /test
-  - /vendor
+exclude: 
 
 defaults:
   - scope:
