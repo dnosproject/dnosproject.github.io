@@ -1,5 +1,5 @@
 ---
-title: Packet Processor
+title: Packet Processor (Java version)
 permalink: /docs/packetprocessor/
 ---
 
