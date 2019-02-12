@@ -1,6 +1,6 @@
 ---
 title: Packet Processor
-permalink: /docs/packetprocessor
+permalink: /docs/packetprocessor/
 ---
 
 
