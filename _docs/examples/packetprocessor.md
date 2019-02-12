@@ -76,7 +76,8 @@ RegistrationRequest request = RegistrationRequest
         });
 ```
 
-3. Finally, we need to create and subscribe to **PACKET_EVENT** topic by calling its remote function.```java
+3. Finally, we need to create and subscribe to **PACKET_EVENT** topic by calling its remote function:
+```java
 // Creates a packet event topic
     Topic packettopic =
         Topic.newBuilder()
