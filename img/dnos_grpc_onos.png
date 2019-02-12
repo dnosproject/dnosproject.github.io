@@ -85,7 +85,7 @@ body
 </head>
 <body>
 
-<div id="buttons"><div class="button btn7" onclick="SwitchColor('FFFFFF');"></div><div class="button btn1" onclick="SwitchColor('EC3627');"></div><div class="button btn9" onclick="SwitchColor('FD9F3A');"></div><div class="button btn2" onclick="SwitchColor('FBFB6C');"></div><div class="button btn3" onclick="SwitchColor('2ED045');"></div><div class="button btn4" onclick="SwitchColor('2BC5E0');"></div><div class="button btn10" onclick="SwitchColor('306BE2');"></div><div class="button btn5" onclick="SwitchColor('7911E8');"></div><div class="button btn6" onclick="SwitchColor('E811E0');"></div><div class="button btn8" onclick="SwitchColor('333333');"></div></div><div id="img_parent"><img src="https://resizeimage.net/mypic/WJ6j7G8sDOR8CUN4/HVI35/dnos_grpc_onos.png" border="0"></div>
+<div id="buttons"><div class="button btn7" onclick="SwitchColor('FFFFFF');"></div><div class="button btn1" onclick="SwitchColor('EC3627');"></div><div class="button btn9" onclick="SwitchColor('FD9F3A');"></div><div class="button btn2" onclick="SwitchColor('FBFB6C');"></div><div class="button btn3" onclick="SwitchColor('2ED045');"></div><div class="button btn4" onclick="SwitchColor('2BC5E0');"></div><div class="button btn10" onclick="SwitchColor('306BE2');"></div><div class="button btn5" onclick="SwitchColor('7911E8');"></div><div class="button btn6" onclick="SwitchColor('E811E0');"></div><div class="button btn8" onclick="SwitchColor('333333');"></div></div><div id="img_parent"><img src="https://resizeimage.net/mypic/WJ6j7G8sDOR8CUN4/lKN5N/dnos_grpc_onos.png" border="0"></div>
 <script type="text/javascript">
 function $get(id)
 {
@@ -104,7 +104,7 @@ function SwitchColor( strClolor )
 	if( myElem != null )
 		myElem.style.background = '#' + strClolor;
 }
-SetImgPos( 960 );
+SetImgPos( 600 );
 </script>
 </body>
 </html>
