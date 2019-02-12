@@ -1,5 +1,5 @@
 ---
-title : 
+title : Documents 
 permalink: /docs/home/
 redirect_from: /docs/index.html
 ---

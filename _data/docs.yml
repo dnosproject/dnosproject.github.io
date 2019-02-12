@@ -2,7 +2,9 @@
   docs:
   - home
 
-- title: Examples
+- title: Tutorials
   docs:
   - packetprocessor
-  - cheatsheet 
+  - cheatsheet
+
+- title: Test
