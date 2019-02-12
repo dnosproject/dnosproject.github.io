@@ -1,5 +1,5 @@
 ---
-title: A Sample Packet Processor
+title: Packet Processor
 permalink: /docs/packetprocessor
 ---
 
