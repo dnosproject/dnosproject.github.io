@@ -18,9 +18,9 @@ $ onos-app IP_OF_YOUR_MACHINE install onos-apps-grpc-integration-oar.oar
 ```
 5. Activate the app in ONOS using the following command: 
 ```console
-$ app activate org.onosproject.grpc-integration**. 
+$ app activate org.onosproject.grpc-integration. 
 ```
-It is ready to execute sample applications!     
+It is ready to execute [sample applications]()!     
 
 
 
