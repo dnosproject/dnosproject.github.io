@@ -3,7 +3,7 @@ title: Topology Service (Java version)
 permalink: /docs/toposervice/
 ---
 
-## Usage Of the Topology Service In A Java Application
+## Usage of the Topology Service in a Java application
 
 DNOS provides a gRPC based topology service that can be used in management applications 
 to retrieve topology information. In this tutorial we will show you how can use that to print topology graph. 
