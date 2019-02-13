@@ -38,7 +38,7 @@ The above command creates an image of the application and run it in a docker con
 
 ### How does the sample topology service application work? 
 
-1- First, we need to create a gRPC channel and TopologyService gRPC stub. We also use an external Conguration service which is part of [dnos-services](https://github.com/dnosproject/dnos-services.git) repository to initalize log4j. 
+1. First, we need to create a gRPC channel and TopologyService gRPC stub. We also use an external Conguration service which is part of [dnos-services](https://github.com/dnosproject/dnos-services.git) repository to initalize log4j. 
 ```java
 ManagedChannel channel;
     String controllerIP;
