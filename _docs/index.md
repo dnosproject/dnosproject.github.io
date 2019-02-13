@@ -20,7 +20,7 @@ $ onos-app IP_OF_YOUR_MACHINE install onos-apps-grpc-integration-oar.oar
 ```console
 $ app activate org.onosproject.grpc-integration. 
 ```
-It is ready to execute sample applications under Tutorials section!     
+It is ready to run sample applications under Tutorials section!     
 
 
 
