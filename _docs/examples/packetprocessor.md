@@ -5,7 +5,8 @@ permalink: /docs/packetprocessor/
 
 ## A Simple External Packet Processor
 
-DNOS provides a gRPC based event notification service that can be used in management applications to receive incoming events such as **PACKET_IN** events. In this tutorial we explain how can you use that service in a java application to receive incoming packets from ONOS. 
+DNOS provides a gRPC based event notification service that can be used in management applications to receive incoming events such as **PACKET_IN** events. In this tutorial we explain how you can 
+use that service in a java application to receive incoming packets from ONOS. 
 
 1. Follow the installation instructions [here](https://dnosproject.github.io/docs/home/) to prepare your setup ready.
 
