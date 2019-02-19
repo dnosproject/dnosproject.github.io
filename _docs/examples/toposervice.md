@@ -20,7 +20,7 @@ $ git clone https://github.com/dnosproject/dnos-apps.git
    $ sudo mn --topo=linear,4 --controller=remote,ip=127.0.0.1
 ```
 
-4. Run the **samplepacketprocessor** app under dnos-apps as follows.
+4. Run the **topogrpc** app under dnos-apps as follows.
 ```console
    $ bazel run  topogrpc:topogrpc_image 
 ```
