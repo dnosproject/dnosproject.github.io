@@ -6,6 +6,6 @@
 - title: Tutorials
   docs:
   - packetprocessor
-  - packetprocessor_python
+  - packetprocessor-python
   - toposervice
   - flowservice
