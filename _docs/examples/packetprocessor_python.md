@@ -15,7 +15,7 @@ use that service in a python application to receive incoming packets from ONOS.
 git clone https://github.com/dnosproject/dnos-apps-python.git
 ```
 
-3. 3. Run a mininet emulation scenario as follows:
+3. Run a mininet emulation scenario as follows:
 ```console
    $ sudo mn --topo=linear,2 --controller=remote,ip=127.0.0.1
 ```
