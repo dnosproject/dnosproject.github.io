@@ -12,7 +12,7 @@ use that service in a java application to receive incoming packets from ONOS.
 
 2. Clone the repository of the sample applications:
 ```console
-$ git clone https://github.com/dnosproject/dnos-apps.git
+$ git clone https://github.com/dnosproject/dnos-apps-java.git
 ```
 
 3. Run a mininet emulation scenario as follows:
@@ -22,7 +22,7 @@ $ git clone https://github.com/dnosproject/dnos-apps.git
 
 4. Run the **samplepacketprocessor** app under dnos-apps as follows.
 ```console
-   $ bazel run  samplepacketprocessor:samplepacketprocessorgrpc_image 
+   $ bazel run  samplepacketprocessor:samplepacketprocessor_image 
 ```
 The above command creates an image of the application and run it in a docker container. You should be able to see it by running the following command: 
 ```console

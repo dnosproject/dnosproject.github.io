@@ -12,7 +12,7 @@ to retrieve topology information. In this tutorial we will show you how can use 
 
 2. Clone the repository of the sample applications:
 ```console
-$ git clone https://github.com/dnosproject/dnos-apps.git
+$ git clone https://github.com/dnosproject/dnos-apps-java.git
 ```
 
 3. Run a mininet emulation scenario as follows:
@@ -22,7 +22,7 @@ $ git clone https://github.com/dnosproject/dnos-apps.git
 
 4. Run the **topogrpc** app under dnos-apps as follows.
 ```console
-   $ bazel run  topogrpc:topogrpc_image 
+   $ bazel run  sampletopology:sampletopology_image 
 ```
 The above command creates an image of the application and run it in a docker container. You should be able to see it by running the following command: 
 ```console
