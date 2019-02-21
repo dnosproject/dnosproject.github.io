@@ -25,7 +25,39 @@ git clone https://github.com/dnosproject/dnos-apps-python.git
 bazel run samplepacketprocessor:samplepacketprocessor 
 ```
 5. Run pingall from mininet command line. After running the pingall, the first incoming ICMP packets will be sent to the controller and the event notification service in DNOS application send them to the external sample packet processer application. The application prints an output like this:
+```console
+An IPv4 packet has been received
+An IPv4 packet has been received
+An IPv4 packet has been received
+An IPv4 packet has been received
+```
 
+## How does the sample packet processor application work? 
 
+1. First of all, we need to create a gRPC channel and register the client in the remote gRPC server which is running in DNOS application as follows:
+```python
+     channel = grpc.insecure_channel('localhost:50051')
+     eventNotificationStub = ServicesProto_pb2_grpc.EventNotificationStub(channel)
 
+     request = EventNotificationProto_pb2.RegistrationRequest(clientId = "packet_processor_python")
+     topic = EventNotificationProto_pb2.Topic(clientId = "packet_processor_python"
+                                              , type = 0)
+
+     # Register to PACKET_EVENT
+     response = eventNotificationStub.register(request)
+```
+
+2. Second, we need to go through the list of incoming events and process incoming packet using a third-party library to extract its information. In this example, we want to print a message whenever we receive an IPv4 packet. 
+```python
+for event in eventObserver:
+          pktContext = event.packetContext
+          if pktContext is None:
+              return
+          inboundPkt = pktContext.inboundPacket
+          pkt = packet.Packet(inboundPkt.data)
+          for p in pkt:
+              if type(p)!= str:
+                 if p.protocol_name == "ipv4":
+                     print("An IPv4 packet has been received")
+```
    
