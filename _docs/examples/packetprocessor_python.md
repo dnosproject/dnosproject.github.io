@@ -49,7 +49,7 @@ An IPv4 packet has been received
 
 2. Second, we need subcribe to **PACKET_EVENT** to receive incoming packets from DNOS. Then we will need to go through the list of incoming events (in this example packet events) and process incoming packets using a third-party library to extract its information. In this example, we want to print a message whenever we receive an IPv4 packet. 
 ```python
- eventObserver = eventNotificationStub.onEvent(topic)
+eventObserver = eventNotificationStub.onEvent(topic)
 for event in eventObserver:
           pktContext = event.packetContext
           if pktContext is None:
