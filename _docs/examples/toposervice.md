@@ -109,42 +109,4 @@ ManagedChannel channel;
         public void onCompleted() {}
     });
 ```
-3. We can also retrieve the list of hosts that have beed detected by ONOS controller. For example, we print the ip address, mac address, and the switch and the port number that host is connected to. 
-```java
-// Retrieves list of hosts in the network topology
- // Retrieves list of hosts in the network topology
-    hostServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
-        @Override
-        public void onNext(Hosts value) {
-            for(HostProto hostProto:value.getHostList()) {
 
-                log.info(hostProto.getIpAddresses(0)
-                + ";" + hostProto.getHostId().getMac() + ";" +
-                hostProto.getLocation().getConnectPoint().getDeviceId()
-                + ":" + hostProto.getLocation().getConnectPoint().getPortNumber());
-            }
-        }
-
-        @Override
-        public void onError(Throwable t) {}
-
-        @Override
-        public void onCompleted() {}
-    });
-```
-4. We can also retireve the number of hosts that have been detected by ONOS controler. 
-```java
-// Returns number of hosts in the network topology.
-    hostServiceStub.getHostCount(empty, new StreamObserver<HostCountProto>() {
-        @Override
-        public void onNext(HostCountProto value) {
-            log.info("Number of Hosts:" + value.getCount());
-        }
-
-        @Override
-        public void onError(Throwable t) {}
-
-        @Override
-        public void onCompleted() {}
-    });
-```
