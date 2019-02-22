@@ -31,17 +31,18 @@ The above command creates an image of the application and run it in a docker con
 
 5. After running the application, it prints the number of links and topology graph information as follows: 
 ```console
- 2019-02-15 01:47:38 INFO  topogrpc:46 - Number of links:6
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000003:3 -->of:0000000000000004:2
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000002:3 -->of:0000000000000003:2
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000002:2 -->of:0000000000000001:2
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000003:2 -->of:0000000000000002:3
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000004:2 -->of:0000000000000003:3
-2019-02-15 01:47:38 INFO  topogrpc:62 - of:0000000000000001:2 -->of:0000000000000002:2
-2019-02-15 01:47:38 INFO  topogrpc:81 - 10.0.0.1;D2:A7:F5:CB:C6:39;of:0000000000000001:1
-2019-02-15 01:47:38 INFO  topogrpc:81 - 10.0.0.4;B6:5D:98:E6:C2:53;of:0000000000000004:1
-2019-02-15 01:47:38 INFO  topogrpc:81 - 10.0.0.3;16:42:42:16:D6:8C;of:0000000000000003:1
-2019-02-15 01:47:38 INFO  topogrpc:81 - 10.0.0.2;5A:0C:03:9F:94:E1;of:0000000000000002:1
+2019-02-22 01:46:06 INFO  sampletopology:114 - Number of Hosts:4
+2019-02-22 01:46:06 INFO  sampletopology:59 - Number of links:6
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000002:3 -->of:0000000000000003:2
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000003:3 -->of:0000000000000004:2
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000002:2 -->of:0000000000000001:2
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000004:2 -->of:0000000000000003:3
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000003:2 -->of:0000000000000002:3
+2019-02-22 01:46:06 INFO  sampletopology:76 - of:0000000000000001:2 -->of:0000000000000002:2
+2019-02-22 01:46:06 INFO  sampletopology:96 - 10.0.0.3;56:F5:08:C3:FA:82;of:0000000000000003:1
+2019-02-22 01:46:06 INFO  sampletopology:96 - 10.0.0.4;26:0D:F0:DB:B0:CB;of:0000000000000004:1
+2019-02-22 01:46:06 INFO  sampletopology:96 - 10.0.0.1;16:67:FD:86:79:A4;of:0000000000000001:1
+2019-02-22 01:46:06 INFO  sampletopology:96 - 10.0.0.2;CE:84:0D:26:D5:CB;of:0000000000000002:1
 ``` 
 
 ### How does the sample topology service application work? 
@@ -69,7 +70,7 @@ ManagedChannel channel;
 
 2. Second, we need to create an Empty request that should be sent as an argument when we call topology servcie functions (i.e. currentTopology and getGraph functions). CurrentTopology function returns high level information about topology such as number of links, the time that topology is created, number of clusters in the topology, etc (For more information, please take a look at [Topology class](http://api.onosproject.org/1.2.1/org/onosproject/net/topology/Topology.html) in ONOS. getGraph function returns a graph of the network topology that includes topology edges and vertices.  
 ```java
- ServicesProto.Empty empty = ServicesProto.Empty.newBuilder().build();
+ Empty empty = Empty.newBuilder().build();
 
     // Retrieves current topology information
     topologyServiceStub.currentTopology(empty,
@@ -111,7 +112,8 @@ ManagedChannel channel;
 3. We can also retrieve the list of hosts that have beed detected by ONOS controller. For example, we print the ip address, mac address, and the switch and the port number that host is connected to. 
 ```java
 // Retrieves list of hosts in the network topology
-    topologyServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
+ // Retrieves list of hosts in the network topology
+    hostServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
         @Override
         public void onNext(Hosts value) {
             for(HostProto hostProto:value.getHostList()) {
@@ -121,6 +123,22 @@ ManagedChannel channel;
                 hostProto.getLocation().getConnectPoint().getDeviceId()
                 + ":" + hostProto.getLocation().getConnectPoint().getPortNumber());
             }
+        }
+
+        @Override
+        public void onError(Throwable t) {}
+
+        @Override
+        public void onCompleted() {}
+    });
+```
+4. We can also retireve the number of hosts that have been detected by ONOS controler. 
+```java
+// Returns number of hosts in the network topology.
+    hostServiceStub.getHostCount(empty, new StreamObserver<HostCountProto>() {
+        @Override
+        public void onNext(HostCountProto value) {
+            log.info("Number of Hosts:" + value.getCount());
         }
 
         @Override
