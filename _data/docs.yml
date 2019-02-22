@@ -8,4 +8,5 @@
   - packetprocessor
   - packetprocessor-python
   - toposervice
+  - hostservice-java
   - flowservice
