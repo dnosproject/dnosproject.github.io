@@ -28,7 +28,6 @@ The above command creates an image of the application and run it in a docker con
 ```
 
 5. After running the above application, you will see an output like this:
-
 ```console
 2019-02-22 23:13:58 INFO  samplehostservice:93 - Number of Hosts:4
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000003:F2:FD:27:C7:FE:90
@@ -41,4 +40,113 @@ The above command creates an image of the application and run it in a docker con
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000002:A2:15:4A:A2:8E:EA
 ```
 
+## How does the samplehostservice application work? 
+
+1. First, we need to create a gRPC channel, a HostService gRPC stub, and a TopologyService gRPC stub. We also use an external Conguration service which is part of [dnos-services](https://github.com/dnosproject/dnos-services.git) repository to initalize log4j. 
+```java
+ManagedChannel channel;
+    String controllerIP;
+    String grpcPort;
+
+    // Initialize a remote config service for logging
+    ConfigService configService = new ConfigService();
+    configService.init();
+    controllerIP = configService.getConfig().getControllerIp();
+    grpcPort = configService.getConfig().getGrpcPort();
+    HostServiceStub hostServiceStub;
+    TopoServiceStub topologyServiceStub;
+
+
+
+    // Creates a gRPC channel
+    channel =
+        ManagedChannelBuilder
+                .forAddress(controllerIP, Integer.parseInt(grpcPort))
+                .usePlaintext()
+                .build();
+
+    // Creates hostService and topoService stubs and assigns them to the gRPC channel.
+
+    hostServiceStub = HostServiceGrpc.newStub(channel);
+    topologyServiceStub = TopoServiceGrpc.newStub(channel);
+```
+
+2. Second, we call HostService and TopologyService functions to use them for printing of host related information: 
+```java
+// Retrieves list of hosts in the network topology
+    hostServiceStub.getHosts(empty, new StreamObserver<Hosts>() {
+        @Override
+        public void onNext(Hosts value) {
+            for(HostProto hostProto:value.getHostList()) {
+
+                log.info(hostProto.getIpAddresses(0)
+                + ";" + hostProto.getHostId().getMac() + ";" +
+                hostProto.getLocation().getConnectPoint().getDeviceId()
+                + ":" + hostProto.getLocation().getConnectPoint().getPortNumber());
+            }
+        }
+
+        @Override
+        public void onError(Throwable t) {}
+
+        @Override
+        public void onCompleted() {}
+    });
+
+    // Returns number of hosts in the network topology.
+    hostServiceStub.getHostCount(empty, new StreamObserver<HostCountProto>() {
+        @Override
+        public void onNext(HostCountProto value) {
+            log.info("Number of Hosts:" + value.getCount());
+        }
+
+        @Override
+        public void onError(Throwable t) {}
+
+        @Override
+        public void onCompleted() {}
+    });
+
+      // Retrieves topology graph and prints the list of hosts connected to each device.
+      topologyServiceStub.getGraph(empty,
+              new StreamObserver<TopologyGraphProto>() {
+          @Override
+          public void onNext(TopologyGraphProto value) {
+
+
+              for(TopologyVertexProto topologyVertexProto: value.getVertexesList()) {
+
+                  DeviceIdProto deviceIdProto = DeviceIdProto
+                          .newBuilder()
+                          .setDeviceId(topologyVertexProto.getDeviceId().getDeviceId())
+                          .build();
+
+                  hostServiceStub.getConnectedHostsByDeviceId(deviceIdProto,
+                          new StreamObserver<Hosts>() {
+                              @Override
+                              public void onNext(Hosts value) {
+                                  List<HostProto> hostProtoList = value.getHostList();
+                                  for(HostProto hostProto: hostProtoList) {
+                                      log.info(deviceIdProto.getDeviceId()
+                                              + ":" + hostProto.getHostId().getMac());
+                                  }
+                              }
+
+                              @Override
+                              public void onError(Throwable t) {}
+
+                              @Override
+                              public void onCompleted() {}
+                          });
+              }
+
+          }
+
+          @Override
+          public void onError(Throwable t) {}
+
+          @Override
+          public void onCompleted() {}
+      });
+```
 
