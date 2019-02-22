@@ -28,6 +28,7 @@ The above command creates an image of the application and run it in a docker con
 ```
 
 5. After running the above application, you will see an output like this:
+
 ```console
 2019-02-22 23:13:58 INFO  samplehostservice:93 - Number of Hosts:4
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000003:F2:FD:27:C7:FE:90
@@ -38,6 +39,6 @@ The above command creates an image of the application and run it in a docker con
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000004:56:14:2F:26:0C:DD
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000001:FE:30:5B:4B:35:17
 2019-02-22 23:13:58 INFO  samplehostservice:123 - of:0000000000000002:A2:15:4A:A2:8E:EA
-```console
+```
 
 
